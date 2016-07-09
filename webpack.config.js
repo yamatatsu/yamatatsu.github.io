@@ -3,16 +3,19 @@ const webpack = require('webpack')
 const path = require('path')
 
 const plugins = [
-  new webpack.NoErrorsPlugin(),
+  new webpack.DefinePlugin({
+    'process.env.NODE_ENV': `"${process.env.NODE_ENV || 'development'}"`,
+  }),
 ]
-production && plugins.push(new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }))
+if (production) plugins.push(new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }))
 
 module.exports = {
   entry: path.join(__dirname, '/src/app.js'),
   resolve: { root: [path.join(__dirname, '/src')] },
   output: {
-    filename: 'bundle.js',
     path: path.join(__dirname, '/js'),
+    filename: 'bundle.js',
+    publicPath: 'js/',
   },
   module: {
     loaders: [

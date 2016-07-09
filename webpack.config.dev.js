@@ -4,7 +4,6 @@ module.exports = Object.assign(base, {
   devtool: 'inline-source-map',
   devServer: {
     port: 3500,
-    hot: true,
     inline: true,
   },
 })

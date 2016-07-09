@@ -37,7 +37,7 @@
     "webpack-manifest-plugin": "^1.0.1"
   },
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.dev.js --progress --profile --colors",
+    "start": "webpack-dev-server --config webpack.config.dev.js --hot --progress --colors",
     "build": "export NODE_ENV=production; webpack -p",
     "test": ""
   },
