@@ -1,6 +1,5 @@
 const webpack = require('webpack')
 const path = require('path')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   entry: path.join(__dirname, '/src/app.js'),
@@ -8,16 +7,10 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, '/js'),
-    publicPath: 'http://localhost:3500/js/',
   },
   module: {
     loaders: [
-      {
-        test: /\.js[x]?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: { presets: ['es2015', 'stage-3', 'react'] },
-      },
+      { test: /\.js[x]?$/, loader: 'babel-loader' },
       { test: /\.css$/, loader: 'style-loader!css-loader' },
       { test: /\.svg$/, loader: 'url-loader?mimetype=image/svg+xml' },
       { test: /\.woff$/, loader: 'url-loader?mimetype=application/font-woff' },
@@ -28,10 +21,5 @@ module.exports = {
   },
   plugins: [
     new webpack.NoErrorsPlugin(),
-    new CleanWebpackPlugin(['js'], {
-      root: __dirname,
-      verbose: true,
-      dry: false,
-    }),
   ],
 }
