@@ -1,5 +1,11 @@
+const production = process.env.NODE_ENV === 'production'
 const webpack = require('webpack')
 const path = require('path')
+
+const plugins = [
+  new webpack.NoErrorsPlugin(),
+]
+production && plugins.push(new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }))
 
 module.exports = {
   entry: path.join(__dirname, '/src/app.js'),
@@ -19,7 +25,5 @@ module.exports = {
       { test: /\.ttf$/, loader: 'url-loader?mimetype=application/font-woff' },
     ],
   },
-  plugins: [
-    new webpack.NoErrorsPlugin(),
-  ],
+  plugins,
 }
