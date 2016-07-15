@@ -29,4 +29,9 @@ module.exports = {
     ],
   },
   plugins,
+  devtool: 'inline-source-map',
+  devServer: {
+    port: 3500,
+    inline: true,
+  },
 }
