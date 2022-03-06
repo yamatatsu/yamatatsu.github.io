@@ -1,9 +1,0 @@
-parser: babel-eslint
-extends:
-  - airbnb
-  - standard
-rules:
-  comma-dangle: [error, always-multiline]
-  no-use-before-define: [error, { functions: false }]
-settings:
-  import/resolver: webpack
